@@ -97,6 +97,7 @@ int ListArray<T>::search(const T& e) {
 		return -1;
 }
 
+template <typename T>
 bool ListArray<T>::empty() {
 	if(n <= 1)
 		return true;
@@ -104,17 +105,20 @@ bool ListArray<T>::empty() {
 		return false;
 }
 
+template <typename T>
 int ListArray<T>::size() {
 	int n = sizeof(arr);
 	return n;
 }
 
+template <typename T>
 ListArray<T>::ListArray() {
 	max = MINSIZE;
 	arr = new T[MINSIZE];
 	n = 0;	
 }
 
+template <typename T>
 T ListArray<T>::operator[] (int pos) {
 	if (pos < 0 || pos > n)
                 throw out_of_range("Posición fuera de rango");
@@ -122,6 +126,7 @@ T ListArray<T>::operator[] (int pos) {
 	return arr[pos];
 }
 
+template <typename U>
 friend ostream& operator<<(ostream &out, ListArray<U>& list) {
 	for(int i = 0; i < list.n; i++) 
 		out << list.arr[i] << " ";
@@ -130,6 +135,7 @@ friend ostream& operator<<(ostream &out, ListArray<U>& list) {
 	return out;
 }
 
+template <typename T>
 void ListArray<T>::resize(int new_size) {
 	if (new_size < n || new_size < MINSIZE)
 	        throw invalid_argument("Tamaño de redimensionado no válido");
